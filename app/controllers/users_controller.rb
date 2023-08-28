@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+    def index
+        @user = User.all
+        render json: @user
+    end
+
     def show
         render json: current_user
     end

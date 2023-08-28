@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :reviews
   resources :cars
-  resources :users
+  resources :users, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Users
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # Sessions
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  
+
   # Defines the root path route ("/")
   # root "articles#index"
 end

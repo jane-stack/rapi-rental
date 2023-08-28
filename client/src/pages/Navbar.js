@@ -4,7 +4,8 @@ function Navbar() {
     return (
         <>
         <div>Rapi Rentals</div>
-        <Link to="/">Cars</Link>
+        <Link to="/">Rentals</Link>
+        <Link to="/login">Login</Link>
         </>
     )
 }

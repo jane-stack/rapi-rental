@@ -1,18 +1,18 @@
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import CarHome from './pages/CarHome';
+import CarHome from './cars/CarHome';
 import Navbar from './pages/Navbar';
-import Footer from './pages/Footer';
+import LoginPage from './auth/LoginPage';
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar />
     <div className="App">
-      <Navbar />
       <Routes>
+        <Route path='/login' element={<LoginPage />} />
         <Route path='/' element={<CarHome />} />
       </Routes>
-      <Footer />
     </div>
     </BrowserRouter>
   );
