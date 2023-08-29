@@ -6,15 +6,21 @@ const UserProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
-        fetch('/me')
+        fetch(`/me`)
         .then(resp => {
             if (resp.ok) {
                 resp.json().then(data => {
-                    setUser(data)
-                })
+                    if (data && data.error) {
+                        setUser(data);
+                        setLoggedIn(false);
+                    } else {
+                        setUser(data);
+                        setLoggedIn(true);
+                    }
+                });
             }
-        })
-    }, [])
+        });
+    }, []);
 
     const loginUser = (user) => {
         setUser(user);

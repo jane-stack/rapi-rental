@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 function Navbar() {
-    const { user, logoutUser, loggedIn } = useContext(UserContext);
+    const { logoutUser, loggedIn } = useContext(UserContext);
     const navigate = useNavigate();
 
     const signoutUser = () => {
@@ -12,12 +12,23 @@ function Navbar() {
         .then(() => navigate('/'))
     }
 
+    const isSignedIn = () => {
+        <>
+        <Link to="#" onClick={signoutUser}>Logout</Link>
+        </>
+    }
+
+    const isSignedOut = () => {
+        <>
+        <Link to="/login">Login</Link>
+        </>
+    }
+
     return (
         <>
         <div>Rapi Rentals</div>
         <Link to="/">Rentals</Link>
-        <Link to="/login">Login</Link>
-        <Link to="#" onClick={signoutUser}>Logout</Link>
+        {loggedIn ? isSignedOut() : isSignedIn()}
         </>
     )
 }
