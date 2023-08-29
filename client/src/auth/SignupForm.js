@@ -12,7 +12,7 @@ function SignupForm() {
         first_name: "",
         email: "",
         password: "",
-        passwordConfirmation: ""
+        password_confirmation: ""
     }
     const [formData, setFormData] = useState(initialState);
     const navigate = useNavigate();
@@ -84,8 +84,8 @@ function SignupForm() {
                 Confirm Password &nbsp;
                 <input 
                 type="password" 
-                name="passwordConfirmation"
-                value={formData.passwordConfirmation} 
+                name="password_confirmation"
+                value={formData.password_confirmation} 
                 onChange={handleChange}/>
             </div>
             <button type="submit">Sign Up</button>
