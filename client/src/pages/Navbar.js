@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 function Navbar() {
-    const { user, logoutUser, loggedIn } = useContext(UserContext);
+    const { logoutUser, loggedIn } = useContext(UserContext);
     const navigate = useNavigate();
     
     const signoutUser = () => {
@@ -16,7 +16,6 @@ function Navbar() {
         return (
             <>
             <Link to="#" onClick={signoutUser}>Logout</Link>
-            <h3>Signed in as, {user.first_name} {user.last_name}</h3>
             </>
         )
     }

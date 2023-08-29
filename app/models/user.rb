@@ -6,7 +6,8 @@ class User < ApplicationRecord
     has_many :car_reviews, through: :cars, source: :car
 
     before_save { email.downcase! }
-    before_validation :capitalize_names
+    before_save { self.first_name = first_name.titleize }
+    before_save { self.last_name = last_name.titleize }
     validates :last_name, :first_name, presence: true
     validates :email, presence: true, uniqueness: true
     validates :password_digest, presence: true
@@ -15,11 +16,6 @@ class User < ApplicationRecord
     validate :password_requirements
 
     private
-
-    def capitalize_names
-        self.first_name = first_name.titleize if first_name.present?
-        self.last_name = last_name.titleize if last_name.present?
-    end
 
     def password_requirements
         return if password.blank?
