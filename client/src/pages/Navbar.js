@@ -13,22 +13,26 @@ function Navbar() {
     }
 
     const isSignedIn = () => {
-        <>
-        <Link to="#" onClick={signoutUser}>Logout</Link>
-        </>
+        return (
+            <>
+            <Link to="#" onClick={signoutUser}>Logout</Link>
+            </>
+        )
     }
 
     const isSignedOut = () => {
-        <>
-        <Link to="/login">Login</Link>
-        </>
+        return (
+            <>
+            <Link to="/login">Login</Link>
+            </>
+        )
     }
 
     return (
         <>
         <div>Rapi Rentals</div>
         <Link to="/">Rentals</Link>
-        {loggedIn ? isSignedOut() : isSignedIn()}
+        {loggedIn ? isSignedIn() : isSignedOut()}
         </>
     )
 }
