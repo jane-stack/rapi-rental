@@ -11,7 +11,6 @@ const UserProvider = ({ children }) => {
             if (resp.ok) {
                 resp.json().then(data => {
                     if (data && data.error) {
-                        setUser(data);
                         setLoggedIn(false);
                     } else {
                         setUser(data);

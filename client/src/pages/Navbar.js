@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 
 function Navbar() {
-    const { logoutUser, loggedIn } = useContext(UserContext);
+    const { user, logoutUser, loggedIn } = useContext(UserContext);
     const navigate = useNavigate();
-
+    
     const signoutUser = () => {
         fetch(`/logout`, { method: "DELETE" })
         .then(logoutUser)
@@ -16,6 +16,7 @@ function Navbar() {
         return (
             <>
             <Link to="#" onClick={signoutUser}>Logout</Link>
+            <h3>Signed in as, {user.first_name} {user.last_name}</h3>
             </>
         )
     }
@@ -29,11 +30,11 @@ function Navbar() {
     }
 
     return (
-        <>
-        <div>Rapi Rentals</div>
-        <Link to="/">Rentals</Link>
-        {loggedIn ? isSignedIn() : isSignedOut()}
-        </>
+        <div>
+            <div>Rapi Rentals</div>
+            <Link to="/">Rentals</Link>
+            {loggedIn ? isSignedIn() : isSignedOut()}
+        </div>
     )
 }
 
